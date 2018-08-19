@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float jumpTime;
-    private float jumpTimeCounter;
     private bool stoppedJumping;
     public Transform GroundCheck;
 
@@ -15,7 +13,6 @@ public class PlayerController : MonoBehaviour {
     public float runSpeed = 5;
     public float jumpForce = 5;
     private bool grounded = true;
-    //private LayerMask maskSol = 8;
     private int maskSol = 1 << 8;
 
     public bool facingRight = true;
@@ -23,12 +20,15 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
 
+    private float miniForce;
+    public float diminutionMiniForce = 3f;
+
+
 
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         Debug.Log(facingRight);
 
@@ -55,19 +55,17 @@ public class PlayerController : MonoBehaviour {
     }
 
     void JumpFunction() {
-        // jumpTime*5 = jumpForce
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            jumpTimeCounter = jumpTime;
+            miniForce = jumpForce;
             stoppedJumping = false;
         }
-        if (Input.GetKey(KeyCode.Space) && !stoppedJumping && jumpTimeCounter >= 0) {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            jumpTimeCounter -= Time.deltaTime;
+        if (Input.GetKey(KeyCode.Space) && !stoppedJumping && miniForce>0) {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, miniForce);
+            miniForce -= diminutionMiniForce * Time.deltaTime;
         }
         if (Input.GetKeyUp(KeyCode.Space)) {
-            jumpTimeCounter = 0;
             stoppedJumping = true;
         }
     }
