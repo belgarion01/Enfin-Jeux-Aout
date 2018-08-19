@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     private bool stoppedJumping;
     public Transform GroundCheck;
 
-    private float groundCheckRadius = 0.3f;
+    public float groundCheckRadius = 0.3f;
 
     private float hAxes;
     public float runSpeed = 5;
@@ -70,4 +70,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(GroundCheck.position, groundCheckRadius);
+    }
 }
