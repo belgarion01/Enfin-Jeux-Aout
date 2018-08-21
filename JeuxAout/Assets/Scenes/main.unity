@@ -715,8 +715,8 @@ MonoBehaviour:
   groundCheckRadius: 0.1
   runSpeed: 10
   jumpForce: 7
+  jumpCounter: 0
   facingRight: 1
-  diminutionMiniForce: 5
 --- !u!50 &1109121486
 Rigidbody2D:
   serializedVersion: 4
@@ -1010,7 +1010,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4718835753407732, guid: 4204dd32a4ddd734eb953f0dee52ecac, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.059
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 4718835753407732, guid: 4204dd32a4ddd734eb953f0dee52ecac, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1042,11 +1042,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4718835753407732, guid: 4204dd32a4ddd734eb953f0dee52ecac, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.3796895
+      value: 1.0018493
       objectReference: {fileID: 0}
     - target: {fileID: 4794187875532180, guid: 4204dd32a4ddd734eb953f0dee52ecac, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.47
+      value: -0.421
       objectReference: {fileID: 0}
     - target: {fileID: 61126957485017344, guid: 4204dd32a4ddd734eb953f0dee52ecac,
         type: 2}
@@ -1160,7 +1160,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.36
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

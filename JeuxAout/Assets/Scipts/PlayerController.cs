@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
-    private bool stoppedJumping;
+ 
+    //GroundCheck
     public Transform GroundCheck;
-
     public float groundCheckRadius = 0.3f;
-
-    private float hAxes;
-    public float runSpeed = 5;
-    public float jumpForce = 5;
     private bool grounded = true;
     private int maskSol = 1 << 8;
 
+    //Mouvement
+    private float hAxes;
+    public float runSpeed = 5;
+    public float jumpForce = 5;
+    public int jumpCounter;
+    private bool isJumping;
+
+    //Facing
     public bool facingRight = true;
     private Vector3 Scalex;
 
+    //Component
     private Rigidbody2D rb2d;
 
-    private float miniForce;
-    public float diminutionMiniForce = 3f;
+    //Jump Mario
+    //private float miniForce;
+    //public float diminutionMiniForce = 3f;
+    //private bool stoppedJumping;
 
 
 
-	void Start () {
+    void Start () {
         rb2d = GetComponent<Rigidbody2D>();
 	}
 	
@@ -34,17 +40,12 @@ public class PlayerController : MonoBehaviour {
 
         hAxes = Input.GetAxis("Horizontal");
         grounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, maskSol);
-
-        if ((hAxes < 0 && facingRight) || (hAxes > 0 && !facingRight)){
-            facingRight = !facingRight;
-
-            Scalex = transform.localScale;
-            Scalex.x *= -1;
-
-            transform.localScale = Scalex;
-            
+        if (grounded) {
+            jumpCounter = 2;
         }
 
+        //Mouvement
+        FlipFunction();
         Move();
         JumpFunction();
         
@@ -55,18 +56,34 @@ public class PlayerController : MonoBehaviour {
     }
 
     void JumpFunction() {
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && (grounded || jumpCounter > 0))
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            miniForce = jumpForce;
-            stoppedJumping = false;
+            jumpCounter--;
+            //miniForce = jumpForce;
+            //stoppedJumping = false;
         }
-        if (Input.GetKey(KeyCode.Space) && !stoppedJumping && miniForce>0) {
+        /*if (Input.GetKey(KeyCode.Space) && !stoppedJumping && miniForce>0) {
             rb2d.velocity = new Vector2(rb2d.velocity.x, miniForce);
             miniForce -= diminutionMiniForce * Time.deltaTime;
         }
+        
         if (Input.GetKeyUp(KeyCode.Space)) {
             stoppedJumping = true;
+        }
+        */
+    }
+
+    void FlipFunction() {
+        if ((hAxes < 0 && facingRight) || (hAxes > 0 && !facingRight))
+        {
+            facingRight = !facingRight;
+
+            Scalex = transform.localScale;
+            Scalex.x *= -1;
+
+            transform.localScale = Scalex;
+
         }
     }
 
