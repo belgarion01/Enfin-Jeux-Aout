@@ -32,7 +32,7 @@ public class PrenableScript : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 orb2d.gravityScale = 1f;
-                objetPris.GetComponent<BoxCollider2D>().enabled = true;
+                objetPris.GetComponent<BoxCollider2D>().isTrigger = false;
                 isHolding = false;
                 //Reset aussi ce qui permet de déterminer quel objet prendre
                 objetPris = null;
@@ -60,7 +60,7 @@ public class PrenableScript : MonoBehaviour {
                 }
                 //De plus, on enlève les propriétés physiques de l'objets et on met le joueur en mode "porte qqchose"
                 isHolding = true;
-                objetPris.GetComponent<BoxCollider2D>().enabled = false;
+                objetPris.GetComponent<BoxCollider2D>().isTrigger = true;
                 orb2d = objetPris.GetComponent<Rigidbody2D>();
                 orb2d.gravityScale = 0f;
                 orb2d.angularVelocity = 0f;
