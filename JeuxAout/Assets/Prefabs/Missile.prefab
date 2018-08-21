@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114105463421987288}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,4 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   depart: 0
+  isSlow: 0
+  slowNumber: 1
+  slowPower: 0.2
   scManager: {fileID: 0}

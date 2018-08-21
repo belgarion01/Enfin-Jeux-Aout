@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-        Debug.Log(facingRight);
 
         hAxes = Input.GetAxis("Horizontal");
         grounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, maskSol);

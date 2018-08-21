@@ -6,6 +6,8 @@ public class SpawnerManager : MonoBehaviour {
 
     private bool droite = false;
 
+    public float spawnRate = 1f;
+
     public GameObject[] SpawnersGauche;
     public GameObject[] SpawnersDroite;
 
@@ -15,7 +17,7 @@ public class SpawnerManager : MonoBehaviour {
         SpawnersGauche = GameObject.FindGameObjectsWithTag("SGauche");
         SpawnersDroite = GameObject.FindGameObjectsWithTag("SDroite");
 
-        InvokeRepeating("SpawnMissile", 2f, 1f);
+        InvokeRepeating("SpawnMissile", 2f, spawnRate);
     }
 	
 	// Update is called once per frame

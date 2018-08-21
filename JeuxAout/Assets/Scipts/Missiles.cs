@@ -10,11 +10,16 @@ public class Missiles : MonoBehaviour {
     public float speed; 
     public float depart;
 
+    public bool isSlow = false;
+    public float slowNumber = 1f;
+    public float slowPower = 0.2f;
+
     public SceneManagerScript scManager;
 
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
+
         if (transform.position.x > 0)
         {
             depart = -1;
@@ -26,7 +31,16 @@ public class Missiles : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        rb2d.velocity = new Vector2(speed * depart, rb2d.velocity.y);
+        if (isSlow)
+        {
+            slowNumber = slowPower;
+        }
+        else {
+            slowNumber = 1f;
+        }
+
+
+        rb2d.velocity = new Vector2(speed * depart*slowNumber, rb2d.velocity.y);
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
