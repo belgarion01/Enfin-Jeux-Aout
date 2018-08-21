@@ -17,30 +17,45 @@ public class PrenableScript : MonoBehaviour {
     public Transform prenableGuide;
 
     void Start () {
-		
+
 	}
 	
 	void Update () {
-
         //(Attention c'est la 2ème partie du code)
         //Si le joueur porte qqchose
         if (isHolding)
         {
             //Met l'objet qu'il porte devant lui
-            objetPris.transform.position = prenableGuide.position;
-            //Si il appuie sur E, il reset les propriétés physique de l'objet et se remet en mode "ne porte rien"
-            if (Input.GetKeyDown(KeyCode.E))
+            if (objetPris == null)
             {
-                orb2d.gravityScale = 1f;
-                objetPris.GetComponent<BoxCollider2D>().isTrigger = false;
+                Debug.Log("prout");
                 isHolding = false;
-                //Reset aussi ce qui permet de déterminer quel objet prendre
-                objetPris = null;
                 distancemin = 100f;
+            }
+            else
+            {
+                objetPris.transform.position = prenableGuide.position;
+                //Si il appuie sur E, il reset les propriétés physique de l'objet et se remet en mode "ne porte rien"
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    orb2d.gravityScale = 1f;
+                    objetPris.GetComponent<BoxCollider2D>().isTrigger = false;
+                    isHolding = false;
+                    //Reset aussi ce qui permet de déterminer quel objet prendre
+                    objetPris = null;
+                    distancemin = 100f;
+                }
             }
         }
         //Si il ne porte rien et quil appuie sur E
         if (Input.GetKeyDown(KeyCode.E)&&!isHolding) {
+            for (int i = ListePrenables.Count - 1; i > -1; i--)
+            {
+                if (ListePrenables[i] == null)
+                {
+                    ListePrenables.RemoveAt(i);
+                }
+            }
             //Il vérifie si la liste des objets prenables et vide
             if (ListePrenables.Count == 0)
             {
@@ -60,10 +75,13 @@ public class PrenableScript : MonoBehaviour {
                 }
                 //De plus, on enlève les propriétés physiques de l'objets et on met le joueur en mode "porte qqchose"
                 isHolding = true;
-                objetPris.GetComponent<BoxCollider2D>().isTrigger = true;
-                orb2d = objetPris.GetComponent<Rigidbody2D>();
-                orb2d.gravityScale = 0f;
-                orb2d.angularVelocity = 0f;
+                if (objetPris != null)
+                {
+                    objetPris.GetComponent<BoxCollider2D>().isTrigger = true;
+                    orb2d = objetPris.GetComponent<Rigidbody2D>();
+                    orb2d.gravityScale = 0f;
+                    orb2d.angularVelocity = 0f;
+                }
             }
         }
     }
@@ -84,5 +102,4 @@ public class PrenableScript : MonoBehaviour {
             ListePrenables.Remove(collision.gameObject);
         } 
     }
-
 }

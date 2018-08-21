@@ -9,6 +9,7 @@ TagManager:
   - SGauche
   - Missile
   - Prenable
+  - PrenableScript
   layers:
   - Default
   - TransparentFX

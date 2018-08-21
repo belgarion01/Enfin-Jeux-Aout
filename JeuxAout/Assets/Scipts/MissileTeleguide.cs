@@ -8,24 +8,27 @@ public class MissileTeleguide : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public float speed = 5f;
-    public float depart;
 
-    public bool isSlow = false;
-    public float slowNumber = 1f;
+    private bool isSlow = false;
+    private float slowNumber = 1f;
     public float slowPower = 0.2f;
 
     private Vector2 direction;
     private float rotateAmount;
     public float rotateSpeed = 200f;
 
-    public SceneManagerScript scManager;
-    public GameObject player;
+    private SceneManagerScript scManager;
+    private GameObject player;
+    public GameObject Loots;
+
+    public PrenableScript prenableScript;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
         player = GameObject.FindGameObjectWithTag("Player");
+        prenableScript = GameObject.FindGameObjectWithTag("PrenableScript").GetComponent<PrenableScript>();
     }
 
     // Update is called once per frame
@@ -44,9 +47,6 @@ public class MissileTeleguide : MonoBehaviour
         {
             slowNumber = 1f;
         }
-
-
-        //rb2d.velocity = new Vector2(speed * depart * slowNumber, rb2d.velocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,6 +55,18 @@ public class MissileTeleguide : MonoBehaviour
         {
             Destroy(collision.gameObject);
             scManager.PlayerKilled();
+        }
+        if (collision.CompareTag("Prenable"))
+        {
+            Debug.Log(collision.gameObject);
+            if (collision.gameObject == prenableScript.objetPris){
+                prenableScript.objetPris = null;
+            }
+            Destroy(collision.gameObject);
+            for (int i = 0; i < 5; i++) {
+                Instantiate(Loots, collision.transform.position+(Vector3)(Random.insideUnitCircle), Quaternion.identity);
+            }
+            Destroy(this.gameObject);
         }
     }
 }
