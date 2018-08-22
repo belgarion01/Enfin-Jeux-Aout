@@ -10,6 +10,8 @@ TagManager:
   - Missile
   - Prenable
   - PrenableScript
+  - PrenableOr
+  - Loot
   layers:
   - Default
   - TransparentFX

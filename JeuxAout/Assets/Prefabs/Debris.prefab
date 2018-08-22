@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 23889840542330662}
   - component: {fileID: 50977132924247094}
   - component: {fileID: 58232777697074824}
+  - component: {fileID: 114279997092064168}
   m_Layer: 0
-  m_Name: Loot
+  m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309529626929526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.57, y: -0, z: 1.1703125}
+  m_LocalPosition: {x: -8.429525, y: -4.360674, z: 1.1703125}
   m_LocalScale: {x: 0.33056566, y: 0.33056566, z: 0.33056566}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: aad6fd57d633f2a47b8345673641b86a, type: 2}
+  - {fileID: 2100000, guid: 6d40b0d7fdb8c1245ac4451bbab446e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,3 +121,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114279997092064168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309529626929526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e6b63451290c54eab030de8298b278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDown: 4
+  dispSpeed: 0.0025

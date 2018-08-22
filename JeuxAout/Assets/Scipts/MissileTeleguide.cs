@@ -15,11 +15,12 @@ public class MissileTeleguide : MonoBehaviour
 
     private Vector2 direction;
     private float rotateAmount;
-    public float rotateSpeed = 200f;
+    public float rotateSpeed = 100f;
 
     private SceneManagerScript scManager;
     private GameObject player;
     public GameObject Loots;
+    public GameObject Debris;
 
     public PrenableScript prenableScript;
 
@@ -64,7 +65,25 @@ public class MissileTeleguide : MonoBehaviour
             }
             Destroy(collision.gameObject);
             for (int i = 0; i < 5; i++) {
-                Instantiate(Loots, collision.transform.position+(Vector3)(Random.insideUnitCircle), Quaternion.identity);
+                Instantiate(Debris, collision.transform.position+(Vector3)(Random.insideUnitCircle), Quaternion.identity);
+            }
+            Destroy(this.gameObject);
+        }
+        if (collision.CompareTag("PrenableOr"))
+        {
+            Debug.Log(collision.gameObject);
+            if (collision.gameObject == prenableScript.objetPris)
+            {
+                prenableScript.objetPris = null;
+            }
+            Destroy(collision.gameObject);
+            for (int i = 0; i < 3; i++)
+            {
+                Instantiate(Debris, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                Instantiate(Loots, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
             }
             Destroy(this.gameObject);
         }

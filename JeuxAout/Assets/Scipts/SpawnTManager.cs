@@ -5,10 +5,11 @@ using UnityEngine;
 public class SpawnTManager : MonoBehaviour {
 
     public GameObject Missiles;
-    public float spawnRate;
+    public float spawnRate = 5f;
+    public float beginTime = 2f;
 
 	void Start () {
-        InvokeRepeating("SpawnMissile", 2f, spawnRate);
+        InvokeRepeating("SpawnMissile", beginTime, spawnRate);
     }
 	
 	// Update is called once per frame

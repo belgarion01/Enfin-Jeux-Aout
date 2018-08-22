@@ -92,7 +92,7 @@ public class PrenableScript : MonoBehaviour {
     //Met dans une liste les objets à porter
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Prenable") && !isHolding&& !ListePrenables.Contains(collision.gameObject))
+        if ((collision.gameObject.CompareTag("Prenable")|| collision.gameObject.CompareTag("PrenableOr")) && !isHolding&& !ListePrenables.Contains(collision.gameObject))
         {
             ListePrenables.Add(collision.gameObject);
         }

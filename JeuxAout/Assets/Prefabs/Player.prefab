@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114393147022610226}
   m_Layer: 0
   m_Name: PrenableDetection (1)
-  m_TagString: Untagged
+  m_TagString: PrenableScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 61126957485017344}
   - component: {fileID: 50156411393918566}
   - component: {fileID: 114194334170473782}
+  - component: {fileID: 114326559340992704}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -89,7 +90,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4154623761265602}
   - component: {fileID: 61856657117051232}
-  - component: {fileID: 114895421345184918}
   m_Layer: 0
   m_Name: FaceDirectionDetector
   m_TagString: Untagged
@@ -128,6 +128,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1982349755208366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4502082046294860}
+  m_Layer: 0
+  m_Name: VomissementPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4154623761265602
 Transform:
   m_ObjectHideFlags: 1
@@ -168,6 +183,19 @@ Transform:
   m_Father: {fileID: 4718835753407732}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4502082046294860
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982349755208366}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.01, y: -0.009981532, z: 0}
+  m_LocalScale: {x: 1, y: 0.99815416, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4718835753407732}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4687578957096900
 Transform:
   m_ObjectHideFlags: 1
@@ -175,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1677802996793440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: 0, z: 0}
+  m_LocalPosition: {x: 0.86, y: 0.47, z: 0}
   m_LocalScale: {x: 1, y: 0.99815416, z: 1}
   m_Children: []
   m_Father: {fileID: 4718835753407732}
@@ -188,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511718761223104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.82, y: -4.1, z: 0}
+  m_LocalPosition: {x: -3.2, y: 12.03, z: 0}
   m_LocalScale: {x: 1, y: 1.0018493, z: 1}
   m_Children:
   - {fileID: 4794187875532180}
@@ -196,6 +224,7 @@ Transform:
   - {fileID: 4687578957096900}
   - {fileID: 4861862450310346}
   - {fileID: 4325588206331664}
+  - {fileID: 4502082046294860}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -404,6 +433,19 @@ MonoBehaviour:
   jumpForce: 12
   jumpCounter: 0
   facingRight: 1
+--- !u!114 &114326559340992704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511718761223104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88400f9b55c7a04489ccb7d6936a4401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vomissementPoint: {fileID: 4502082046294860}
+  Fuel: {fileID: 1468247781813326, guid: f33a9e03000437f4c8c0af177741a893, type: 2}
 --- !u!114 &114393147022610226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,17 +476,6 @@ MonoBehaviour:
   ListePrenables: []
   objetPris: {fileID: 0}
   prenableGuide: {fileID: 4687578957096900}
---- !u!114 &114895421345184918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598156637840000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e56eb6c027c1ab48847f79614323b6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212066819416405008
 SpriteRenderer:
   m_ObjectHideFlags: 1

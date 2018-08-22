@@ -8,6 +8,8 @@ public class SceneManagerScript : MonoBehaviour {
 
     public Text GameOver;
 
+    public Slider Fueler;
+    public int fuelCount = 0;
 
 	void Start () {
 		
@@ -17,6 +19,7 @@ public class SceneManagerScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        Fueler.value = fuelCount;
 	}
 
     public void PlayerKilled() {
