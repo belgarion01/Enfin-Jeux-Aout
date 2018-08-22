@@ -28,13 +28,14 @@ public class PrenableScript : MonoBehaviour {
             //Met l'objet qu'il porte devant lui
             if (objetPris == null)
             {
-                Debug.Log("prout");
+                
                 isHolding = false;
                 distancemin = 100f;
             }
             else
             {
                 objetPris.transform.position = prenableGuide.position;
+
                 //Si il appuie sur E, il reset les propriétés physique de l'objet et se remet en mode "ne porte rien"
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -44,11 +45,13 @@ public class PrenableScript : MonoBehaviour {
                     //Reset aussi ce qui permet de déterminer quel objet prendre
                     objetPris = null;
                     distancemin = 100f;
+                    return;
                 }
             }
         }
         //Si il ne porte rien et quil appuie sur E
         if (Input.GetKeyDown(KeyCode.E)&&!isHolding) {
+            Debug.Log("prout");
             for (int i = ListePrenables.Count - 1; i > -1; i--)
             {
                 if (ListePrenables[i] == null)
