@@ -105,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4687578957096900}
+  - component: {fileID: 114687624739950664}
   m_Layer: 0
   m_Name: PrenableGuide
   m_TagString: Untagged
@@ -203,7 +204,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1677802996793440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: 0.47, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 0.99815416, z: 1}
   m_Children: []
   m_Father: {fileID: 4718835753407732}
@@ -216,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511718761223104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 12.03, z: 0}
+  m_LocalPosition: {x: -3.78, y: -2.76, z: 0}
   m_LocalScale: {x: 1, y: 1.0018493, z: 1}
   m_Children:
   - {fileID: 4794187875532180}
@@ -429,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundCheck: {fileID: 4794187875532180}
   groundCheckRadius: 0.1
+  grounded: 1
   runSpeed: 10
   jumpForce: 12
   jumpCounter: 0
@@ -461,6 +463,19 @@ MonoBehaviour:
   ListePrenables: []
   objetPris: {fileID: 0}
   prenableGuide: {fileID: 4687578957096900}
+--- !u!114 &114687624739950664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677802996793440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109fa09a094f34f4aa0d1af8cf42ad6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mycam: {fileID: 0}
+  Player: {fileID: 4718835753407732}
 --- !u!114 &114697628506547200
 MonoBehaviour:
   m_ObjectHideFlags: 1
