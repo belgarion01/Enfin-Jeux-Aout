@@ -56,6 +56,11 @@ public class MissileTeleguide : MonoBehaviour
         {
             Destroy(collision.gameObject);
             scManager.PlayerKilled();
+            Destroy(this.gameObject);
+        }
+        if (collision.CompareTag("Sol"))
+        {
+            Destroy(this.gameObject);
         }
         if (collision.CompareTag("Prenable"))
         {
@@ -87,5 +92,6 @@ public class MissileTeleguide : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+        
     }
 }

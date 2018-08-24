@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     //GroundCheck
     public Transform GroundCheck;
     public float groundCheckRadius = 0.3f;
-    private bool grounded = true;
+    public bool grounded = true;
     private int maskSol = 1 << 8;
 
     //Mouvement
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
         hAxes = Input.GetAxis("Horizontal");
-        grounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, maskSol);
+        //grounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, maskSol);
         if (grounded) {
             jumpCounter = 2;
         }

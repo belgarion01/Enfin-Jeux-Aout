@@ -20,7 +20,7 @@ public class SpawnTManager : MonoBehaviour {
     void SpawnMissile()
     {
 
-        Instantiate(Missiles, new Vector2(Random.Range(-11f, 11f), 8f), Quaternion.identity);
+        Instantiate(Missiles, new Vector2(Random.Range(transform.position.x-11f, transform.position.x+ 11f), transform.position.y), Quaternion.identity);
 
     }
 }
