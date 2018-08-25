@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511718761223104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.78, y: -2.76, z: 0}
+  m_LocalPosition: {x: -2.0492644, y: -1.3270125, z: 0}
   m_LocalScale: {x: 1, y: 1.0018493, z: 1}
   m_Children:
   - {fileID: 4794187875532180}
@@ -462,7 +462,8 @@ MonoBehaviour:
   isHolding: 0
   ListePrenables: []
   objetPris: {fileID: 0}
-  prenableGuide: {fileID: 4687578957096900}
+  prenableGuide: {fileID: 1677802996793440}
+  pushSpeed: 6
 --- !u!114 &114687624739950664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -476,6 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mycam: {fileID: 0}
   Player: {fileID: 4718835753407732}
+  dir: {x: 0, y: 0}
 --- !u!114 &114697628506547200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,6 +493,7 @@ MonoBehaviour:
   ListePrenables: []
   objetPris: {fileID: 0}
   prenableGuide: {fileID: 4687578957096900}
+  pushSpeed: 0
 --- !u!212 &212066819416405008
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -14,13 +14,16 @@ public class PrenableScript : MonoBehaviour {
     private float distance = 0f;
     private float distancemin = 100f;
     //Ou va aller l'objet
-    public Transform prenableGuide;
+    public GameObject prenableGuide;
+    private PGuide pguide;
+    public float pushSpeed;
 
     void Start () {
-
+        pguide = prenableGuide.GetComponent<PGuide>();
 	}
 	
 	void Update () {
+        
         //(Attention c'est la 2ème partie du code)
         //Si le joueur porte qqchose
         if (isHolding)
@@ -34,13 +37,15 @@ public class PrenableScript : MonoBehaviour {
             }
             else
             {
-                objetPris.transform.position = prenableGuide.position;
+                objetPris.transform.position = prenableGuide.transform.position;
 
                 //Si il appuie sur E, il reset les propriétés physique de l'objet et se remet en mode "ne porte rien"
-                if (Input.GetKeyDown(KeyCode.E))
+                if (/*Input.GetKeyDown(KeyCode.E)*/Input.GetMouseButtonDown(0))
                 {
                     orb2d.gravityScale = 1f;
                     objetPris.GetComponent<BoxCollider2D>().isTrigger = false;
+                    orb2d.velocity =pguide.dir * pushSpeed;
+                    Debug.Log(pguide.dir * pushSpeed);
                     isHolding = false;
                     //Reset aussi ce qui permet de déterminer quel objet prendre
                     objetPris = null;
@@ -50,7 +55,7 @@ public class PrenableScript : MonoBehaviour {
             }
         }
         //Si il ne porte rien et quil appuie sur E
-        if (Input.GetKeyDown(KeyCode.E)&&!isHolding) {
+        if (/*Input.GetKeyDown(KeyCode.E)*/Input.GetMouseButtonDown(0) && !isHolding) {
             Debug.Log("prout");
             for (int i = ListePrenables.Count - 1; i > -1; i--)
             {

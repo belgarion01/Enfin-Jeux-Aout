@@ -44,10 +44,15 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Mouvement
-        FlipFunction();
-        Move();
+        //FlipFunction();
+        //Move();
         JumpFunction();
         
+    }
+    private void FixedUpdate()
+    {
+        Move();
+        FlipFunction();
     }
 
     void Move() {
