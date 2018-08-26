@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour {
     //Component
     private Rigidbody2D rb2d;
 
+    //Explosion
+    public GameObject explosionRadius;
+
     //Jump Mario
     //private float miniForce;
     //public float diminutionMiniForce = 3f;
@@ -36,6 +39,9 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            Instantiate(explosionRadius, transform.position, Quaternion.identity);
+        }
 
         hAxes = Input.GetAxis("Horizontal");
         //grounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, maskSol);
@@ -44,15 +50,15 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Mouvement
-        //FlipFunction();
-        //Move();
+        FlipFunction();
+        Move();
         JumpFunction();
         
     }
     private void FixedUpdate()
     {
-        Move();
-        FlipFunction();
+        //Move();
+        //FlipFunction();
     }
 
     void Move() {

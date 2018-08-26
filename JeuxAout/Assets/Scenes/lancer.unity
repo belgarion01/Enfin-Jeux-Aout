@@ -205,6 +205,12 @@ Prefab:
       propertyPath: mycam
       value: 
       objectReference: {fileID: 1021410973}
+    - target: {fileID: 114194334170473782, guid: 4204dd32a4ddd734eb953f0dee52ecac,
+        type: 2}
+      propertyPath: explosionRadius
+      value: 
+      objectReference: {fileID: 1255593807215240, guid: 49e464b8809d964469c9689bcd67750f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4204dd32a4ddd734eb953f0dee52ecac, type: 2}
   m_IsPrefabAsset: 0
