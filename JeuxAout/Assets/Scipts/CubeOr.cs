@@ -24,37 +24,32 @@ public class CubeOr : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Missile"))
         {
+            Death();
             Destroy(collision.gameObject);
-            for (int i = 0; i < nombreDebris; i++)
-            {
-                Instantiate(Debris, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-                
-            }
-            for (int i = 0; i < nombreLoot; i++)
-            {
-                Instantiate(Loots, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-            }
-            Destroy(this.gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Missile"))
         {
-            if (this.gameObject == prenableScript.objetPris)
-            {
-                prenableScript.objetPris = null;
-            }
+            Death();
             Destroy(collision.gameObject);
-            for (int i = 0; i < nombreDebris; i++)
-            {
-                Instantiate(Debris, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-            }
-            for (int i = 0; i < nombreLoot; i++)
-            {
-                Instantiate(Loots, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-            }
-            Destroy(this.gameObject);
         }
+    }
+    void Death() {
+        if (this.gameObject == prenableScript.objetPris)
+        {
+            prenableScript.objetPris = null;
+        }
+
+        for (int i = 0; i < nombreDebris; i++)
+        {
+            Instantiate(Debris, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
+        }
+        for (int i = 0; i < nombreLoot; i++)
+        {
+            Instantiate(Loots, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
+        }
+        Destroy(this.gameObject);
     }
 }

@@ -10,6 +10,8 @@ public class Explosion : MonoBehaviour {
     public int stade = 3;
 
     public List<GameObject> ListExplosion;
+    private Cube cubeScript;
+
 
 
     void Start () {
@@ -28,6 +30,8 @@ public class Explosion : MonoBehaviour {
         }
         if (Input.GetKeyUp(KeyCode.A)){
             foreach (GameObject victime in ListExplosion) {
+                cubeScript = victime.GetComponent<Cube>();
+                cubeScript.Death();
                 Destroy(victime.gameObject);
             }
             Destroy(this.gameObject);

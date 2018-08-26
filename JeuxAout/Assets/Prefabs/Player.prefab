@@ -536,7 +536,8 @@ MonoBehaviour:
   jumpForce: 7
   jumpCounter: 0
   facingRight: 1
-  explosionRadius: {fileID: 0}
+  explosionRadius: {fileID: 1255593807215240, guid: 49e464b8809d964469c9689bcd67750f,
+    type: 2}
   col: []
 --- !u!114 &114326559340992704
 MonoBehaviour:

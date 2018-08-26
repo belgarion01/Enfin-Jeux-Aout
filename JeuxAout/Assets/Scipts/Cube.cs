@@ -7,6 +7,10 @@ public class Cube : MonoBehaviour {
     public PrenableScript prenableScript;
 
     public GameObject Debris;
+    public GameObject Loots;
+
+    public int nombreDebris = 4;
+    public int nombreLoots = 3;
 
     void Start () {
         prenableScript = GameObject.FindGameObjectWithTag("PrenableScript").GetComponent<PrenableScript>();
@@ -22,27 +26,45 @@ public class Cube : MonoBehaviour {
         if (collision.gameObject.CompareTag("Missile"))
         {
             Destroy(collision.gameObject);
-            for (int i = 0; i < 5; i++)
-            {
-                Instantiate(Debris, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-            }
-            Destroy(this.gameObject);
+            Death();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Missile"))
         {
+            Death();
+            Destroy(collision.gameObject);
+        }
+    }
+    public void Death() {
+        if (this.gameObject == prenableScript.objetPris)
+        {
+            prenableScript.objetPris = null;
+        }
+        if (this.gameObject.CompareTag("Prenable"))
+        {
+            for (int i = 0; i < nombreDebris; i++)
+            {
+                Instantiate(Debris, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
+                Debug.Log("&");
+            }
+        }
+        if (this.gameObject.CompareTag("PrenableOr")){
             if (this.gameObject == prenableScript.objetPris)
             {
                 prenableScript.objetPris = null;
             }
-            Destroy(collision.gameObject);
-            for (int i = 0; i < 5; i++)
+
+            for (int i = 0; i < nombreDebris; i++)
             {
-                Instantiate(Debris, collision.transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
+                Instantiate(Debris, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
             }
-            Destroy(this.gameObject);
+            for (int i = 0; i < nombreLoots; i++)
+            {
+                Instantiate(Loots, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
+            }
         }
+        Destroy(this.gameObject);
     }
 }
