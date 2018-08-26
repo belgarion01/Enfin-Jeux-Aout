@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23828697422607118}
   - component: {fileID: 61581615105017080}
   - component: {fileID: 50360471525164494}
+  - component: {fileID: 114030797281405688}
   m_Layer: 8
   m_Name: ObjetPrenable (123)
   m_TagString: PrenableOr
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1850409270721048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: -9.2, z: 0.24443085}
+  m_LocalPosition: {x: -4.632333, y: -1.2436786, z: 0.24443085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114030797281405688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850409270721048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71ee70ef444260418fc763faf10afeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreDebris: 2
+  nombreLoot: 3
+  Debris: {fileID: 1309529626929526, guid: d077815aa65900344b44f56d7a8f5de8, type: 2}
+  Loots: {fileID: 1468247781813326, guid: f33a9e03000437f4c8c0af177741a893, type: 2}
+  prenableScript: {fileID: 0}

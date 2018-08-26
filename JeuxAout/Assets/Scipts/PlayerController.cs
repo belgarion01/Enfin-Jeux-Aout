@@ -27,16 +27,22 @@ public class PlayerController : MonoBehaviour {
     //Explosion
     public GameObject explosionRadius;
 
-    //Jump Mario
-    //private float miniForce;
-    //public float diminutionMiniForce = 3f;
-    //private bool stoppedJumping;
+    //SceneManager
+    private SceneManagerScript scManager;
 
-
+    //FixeingBug
+    public Collider2D[] col;
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-	}
+        scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
+        col = this.gameObject.GetComponents<Collider2D>();
+        foreach (Collider2D truc in col) {
+            Debug.Log(truc.name);
+        }
+
+
+    }
 	
 	void Update () {
         if (Input.GetKeyDown(KeyCode.A)) {
@@ -70,6 +76,8 @@ public class PlayerController : MonoBehaviour {
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             jumpCounter--;
+            grounded = false;
+            Debug.Log(grounded);
             //miniForce = jumpForce;
             //stoppedJumping = false;
         }
@@ -100,5 +108,15 @@ public class PlayerController : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(GroundCheck.position, groundCheckRadius);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Missile")){
+            Debug.Log(collision.gameObject);
+            Destroy(collision.gameObject);
+            scManager.PlayerKilled();
+            Destroy(this.gameObject);
+        }
     }
 }
