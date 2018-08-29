@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     public int jumpCounter;
     private bool isJumping;
 
+    public bool canMove = true;
+
     //Facing
     public bool facingRight = true;
     private Vector3 Scalex;
@@ -47,6 +49,10 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.A)) {
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
+            canMove = false;
+        }
+        if (Input.GetKeyUp(KeyCode.A)){
+            canMove = true;
         }
 
         hAxes = Input.GetAxis("Horizontal");
@@ -57,8 +63,11 @@ public class PlayerController : MonoBehaviour {
 
         //Mouvement
         FlipFunction();
-        Move();
-        JumpFunction();
+        if (canMove)
+        {
+            Move();
+            JumpFunction();
+        }
         
     }
     private void FixedUpdate()

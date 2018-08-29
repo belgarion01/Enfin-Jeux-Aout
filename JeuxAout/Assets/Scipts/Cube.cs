@@ -6,11 +6,8 @@ public class Cube : MonoBehaviour {
 
     public PrenableScript prenableScript;
 
-    public GameObject Debris;
-    public GameObject Loots;
-
-    public int nombreDebris = 4;
-    public int nombreLoots = 3;
+    public GameObject SpawnerDebris;
+    public GameObject SpawnerLoot;
 
     void Start () {
         prenableScript = GameObject.FindGameObjectWithTag("PrenableScript").GetComponent<PrenableScript>();
@@ -44,26 +41,11 @@ public class Cube : MonoBehaviour {
         }
         if (this.gameObject.CompareTag("Prenable"))
         {
-            for (int i = 0; i < nombreDebris; i++)
-            {
-                Instantiate(Debris, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-                Debug.Log("&");
-            }
+            Instantiate(SpawnerDebris, transform.position, Quaternion.identity);
         }
-        if (this.gameObject.CompareTag("PrenableOr")){
-            if (this.gameObject == prenableScript.objetPris)
-            {
-                prenableScript.objetPris = null;
-            }
-
-            for (int i = 0; i < nombreDebris; i++)
-            {
-                Instantiate(Debris, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-            }
-            for (int i = 0; i < nombreLoots; i++)
-            {
-                Instantiate(Loots, transform.position + (Vector3)(Random.insideUnitCircle), Quaternion.identity);
-            }
+        if (this.gameObject.CompareTag("PrenableOr"))
+        {
+            Instantiate(SpawnerLoot, transform.position, Quaternion.identity);
         }
         Destroy(this.gameObject);
     }

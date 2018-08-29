@@ -194,6 +194,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114264722243541522, guid: 0e4268e13a42fe541a0cd944256cb16b,
+        type: 2}
+      propertyPath: SpawnerLoot
+      value: 
+      objectReference: {fileID: 1266757763026238, guid: 238f9fba7ed95a24a82b358496c9492d,
+        type: 2}
+    - target: {fileID: 114264722243541522, guid: 0e4268e13a42fe541a0cd944256cb16b,
+        type: 2}
+      propertyPath: SpawnerDebris
+      value: 
+      objectReference: {fileID: 1718192745418354, guid: 5c33f0ffa0023a5409920a4f7abf3bdd,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e4268e13a42fe541a0cd944256cb16b, type: 2}
   m_IsPrefabAsset: 0
@@ -568,11 +580,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4603892067215554, guid: c381e0dafe163de4cac356cf3fc25c00, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.5450859
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: 4603892067215554, guid: c381e0dafe163de4cac356cf3fc25c00, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.0177753
+      value: -2.96
       objectReference: {fileID: 0}
     - target: {fileID: 4603892067215554, guid: c381e0dafe163de4cac356cf3fc25c00, type: 2}
       propertyPath: m_LocalPosition.z
