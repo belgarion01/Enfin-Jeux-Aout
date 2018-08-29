@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
     public Transform GroundCheck;
     public float groundCheckRadius = 0.3f;
     public bool grounded = true;
-    private int maskSol = 1 << 8;
 
     //Mouvement
     private float hAxes;
@@ -29,6 +28,15 @@ public class PlayerController : MonoBehaviour {
     //Explosion
     public GameObject explosionRadius;
 
+    //God Mod
+    public bool isGodmod = true;
+    public Camera mycam;
+    private Vector3 mousepos;
+    private Vector3 screenpos;
+    private LayerMask lMask = 1 << 8;
+    private bool isGrabing = false;
+    private GameObject grabed;
+
     //SceneManager
     private SceneManagerScript scManager;
 
@@ -40,13 +48,14 @@ public class PlayerController : MonoBehaviour {
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
         col = this.gameObject.GetComponents<Collider2D>();
         foreach (Collider2D truc in col) {
-            Debug.Log(truc.name);
         }
-
-
     }
 	
 	void Update () {
+
+       
+
+
         if (Input.GetKeyDown(KeyCode.A)) {
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
@@ -56,7 +65,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         hAxes = Input.GetAxis("Horizontal");
-        //grounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, maskSol);
         if (grounded) {
             jumpCounter = 2;
         }
@@ -68,12 +76,29 @@ public class PlayerController : MonoBehaviour {
             Move();
             JumpFunction();
         }
-        
-    }
-    private void FixedUpdate()
-    {
-        //Move();
-        //FlipFunction();
+        if (isGodmod) {
+            if (Input.GetMouseButtonDown(0)&&!isGrabing)
+            {
+                mousepos = Input.mousePosition;
+                mousepos.z = 10f;
+                screenpos = mycam.ScreenToWorldPoint(mousepos);
+
+                RaycastHit2D myhit = Physics2D.Raycast(screenpos, Vector2.zero, Mathf.Infinity, lMask);
+                if (myhit)
+                {
+                    isGrabing = true;
+                    grabed = myhit.transform.gameObject;
+                }
+            }
+            if (isGrabing) {
+                Vector3 pos = mycam.ScreenToWorldPoint(Input.mousePosition);
+                pos.z = 0;
+                grabed.transform.position = pos;
+                if (Input.GetMouseButtonUp(0)) {
+                    isGrabing = false;
+                }
+            }
+        }
     }
 
     void Move() {
@@ -86,19 +111,7 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             jumpCounter--;
             grounded = false;
-            Debug.Log(grounded);
-            //miniForce = jumpForce;
-            //stoppedJumping = false;
         }
-        /*if (Input.GetKey(KeyCode.Space) && !stoppedJumping && miniForce>0) {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, miniForce);
-            miniForce -= diminutionMiniForce * Time.deltaTime;
-        }
-        
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            stoppedJumping = true;
-        }
-        */
     }
 
     void FlipFunction() {
@@ -114,6 +127,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void PowerUp() {
+
+        Debug.Log("Bouya");
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(GroundCheck.position, groundCheckRadius);

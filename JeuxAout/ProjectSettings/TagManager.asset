@@ -13,6 +13,7 @@ TagManager:
   - PrenableOr
   - Loot
   - Sol
+  - PrenablePower
   layers:
   - Default
   - TransparentFX

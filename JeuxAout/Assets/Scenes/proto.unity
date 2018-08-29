@@ -1984,6 +1984,11 @@ Prefab:
       propertyPath: mycam
       value: 
       objectReference: {fileID: 1726105643}
+    - target: {fileID: 114194334170473782, guid: 4204dd32a4ddd734eb953f0dee52ecac,
+        type: 2}
+      propertyPath: mycam
+      value: 
+      objectReference: {fileID: 1726105643}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4204dd32a4ddd734eb953f0dee52ecac, type: 2}
   m_IsPrefabAsset: 0

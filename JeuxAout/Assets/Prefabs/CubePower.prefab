@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1508792677029410}
+  m_RootGameObject: {fileID: 1715957574620600}
   m_IsPrefabAsset: 1
---- !u!1 &1508792677029410
+--- !u!1 &1715957574620600
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4436640604768300}
-  - component: {fileID: 33639314320742124}
-  - component: {fileID: 23219942814402874}
-  - component: {fileID: 61200608883536626}
-  - component: {fileID: 50174087095600720}
+  - component: {fileID: 4355663861361316}
+  - component: {fileID: 33996159831338498}
+  - component: {fileID: 23523247654237592}
+  - component: {fileID: 61695654574824642}
+  - component: {fileID: 50875565472436130}
+  - component: {fileID: 114198817318967420}
   m_Layer: 8
-  m_Name: Sol
-  m_TagString: Sol
+  m_Name: CubePower
+  m_TagString: PrenablePower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4436640604768300
+--- !u!4 &4355663861361316
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508792677029410}
+  m_GameObject: {fileID: 1715957574620600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48934853, y: -4.733358, z: -0.023775082}
-  m_LocalScale: {x: 48.8886, y: 2.377, z: 1}
+  m_LocalPosition: {x: 0.17, y: -2.68, z: -1.479861}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23219942814402874
+--- !u!23 &23523247654237592
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508792677029410}
+  m_GameObject: {fileID: 1715957574620600}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 443aa180c014c3c4e9c40dd48b9cf287, type: 2}
+  - {fileID: 2100000, guid: aad6fd57d633f2a47b8345673641b86a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,21 +79,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33639314320742124
+--- !u!33 &33996159831338498
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508792677029410}
+  m_GameObject: {fileID: 1715957574620600}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &50174087095600720
+--- !u!50 &50875565472436130
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508792677029410}
-  m_BodyType: 2
+  m_GameObject: {fileID: 1715957574620600}
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -105,12 +106,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61200608883536626
+--- !u!61 &61695654574824642
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508792677029410}
+  m_GameObject: {fileID: 1715957574620600}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114198817318967420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715957574620600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbebd49f06ef48b47a8b2e60b3948e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prenableScript: {fileID: 0}
+  SpawnerDebris: {fileID: 1718192745418354, guid: 5c33f0ffa0023a5409920a4f7abf3bdd,
+    type: 2}
+  SpawnerLoot: {fileID: 1266757763026238, guid: 238f9fba7ed95a24a82b358496c9492d,
+    type: 2}

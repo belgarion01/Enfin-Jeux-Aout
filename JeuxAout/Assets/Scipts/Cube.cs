@@ -9,8 +9,11 @@ public class Cube : MonoBehaviour {
     public GameObject SpawnerDebris;
     public GameObject SpawnerLoot;
 
+    private PlayerController pController;
+
     void Start () {
         prenableScript = GameObject.FindGameObjectWithTag("PrenableScript").GetComponent<PrenableScript>();
+        pController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 	
 	// Update is called once per frame
@@ -46,6 +49,9 @@ public class Cube : MonoBehaviour {
         if (this.gameObject.CompareTag("PrenableOr"))
         {
             Instantiate(SpawnerLoot, transform.position, Quaternion.identity);
+        }
+        if (this.gameObject.CompareTag("PrenablePower")) {
+            pController.PowerUp();
         }
         Destroy(this.gameObject);
     }

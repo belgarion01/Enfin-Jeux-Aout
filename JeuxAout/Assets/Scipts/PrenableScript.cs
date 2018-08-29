@@ -17,16 +17,19 @@ public class PrenableScript : MonoBehaviour {
     public GameObject prenableGuide;
     private PGuide pguide;
     public float pushSpeed;
+    //Player
+    private PlayerController pController;
 
     void Start () {
         pguide = prenableGuide.GetComponent<PGuide>();
+        pController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	void Update () {
         
         //(Attention c'est la 2ème partie du code)
         //Si le joueur porte qqchose
-        if (isHolding)
+        if (isHolding&&!pController.isGodmod)
         {
             //Met l'objet qu'il porte devant lui
             if (objetPris == null)
@@ -56,7 +59,6 @@ public class PrenableScript : MonoBehaviour {
         }
         //Si il ne porte rien et quil appuie sur E
         if (/*Input.GetKeyDown(KeyCode.E)*/Input.GetMouseButtonDown(0) && !isHolding) {
-            Debug.Log("prout");
             for (int i = ListePrenables.Count - 1; i > -1; i--)
             {
                 if (ListePrenables[i] == null)
@@ -97,7 +99,7 @@ public class PrenableScript : MonoBehaviour {
     //Met dans une liste les objets à porter
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("Prenable")|| collision.gameObject.CompareTag("PrenableOr")) && !isHolding&& !ListePrenables.Contains(collision.gameObject))
+        if ((collision.gameObject.CompareTag("Prenable")|| collision.gameObject.CompareTag("PrenableOr")|| collision.gameObject.CompareTag("PrenablePower")) && !isHolding&& !ListePrenables.Contains(collision.gameObject))
         {
             ListePrenables.Add(collision.gameObject);
         }
