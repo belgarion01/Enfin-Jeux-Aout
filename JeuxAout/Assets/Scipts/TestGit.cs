@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestGit2 : MonoBehaviour {
+public class TestGit : MonoBehaviour {
 
-	// SQALALALALA
-
-    //Hugo2
-
-
-
+	// BBBBBBBBBBBBBBBBBBBBBBBBBBBB
 }
