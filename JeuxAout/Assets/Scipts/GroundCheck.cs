@@ -6,9 +6,11 @@ public class GroundCheck : MonoBehaviour {
 
 
     private PlayerController pController;
+    private Animator anim;
 
 	void Start () {
         pController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        anim = GetComponentInParent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -18,6 +20,11 @@ public class GroundCheck : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        pController.grounded = true;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Sol") || collision.gameObject.layer == LayerMask.NameToLayer("Cube"))
+        {
+            pController.grounded = true;
+            Debug.Log("caca");
+            anim.SetBool("Grounded", true);
+        }
     }
 }

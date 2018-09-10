@@ -12,11 +12,12 @@ public class PlayerController : MonoBehaviour {
     //Mouvement
     private float hAxes;
     public float runSpeed = 5;
-    public float jumpForce = 5;
+    public float jumpForce = 7;
     public int jumpCounter;
     private bool isJumping;
 
     public bool canMove = true;
+
 
     //Facing
     public bool facingRight = true;
@@ -40,20 +41,21 @@ public class PlayerController : MonoBehaviour {
     //SceneManager
     private SceneManagerScript scManager;
 
-    //FixeingBug
-    public Collider2D[] col;
+    //Animation
+    private Animator anim;
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
-        col = this.gameObject.GetComponents<Collider2D>();
-        foreach (Collider2D truc in col) {
-        }
+        anim = GetComponent<Animator>();
+        
     }
 	
 	void Update () {
 
-       
+        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+        anim.SetFloat("VelocityY", rb2d.velocity.y);
+        anim.SetInteger("JumpCounter", jumpCounter);
 
 
         if (Input.GetKeyDown(KeyCode.A)) {
@@ -108,9 +110,17 @@ public class PlayerController : MonoBehaviour {
     void JumpFunction() {
         if (Input.GetKeyDown(KeyCode.Space) && (grounded || jumpCounter > 0))
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            if (jumpCounter == 2)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            }
+            else {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce+1);
+            }
             jumpCounter--;
             grounded = false;
+            
+            anim.SetBool("Grounded", false);
         }
     }
 
@@ -125,6 +135,7 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = Scalex;
 
         }
+
     }
 
     public void PowerUp() {
