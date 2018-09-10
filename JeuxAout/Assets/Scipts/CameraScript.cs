@@ -7,7 +7,7 @@ public class CameraScript : MonoBehaviour {
     public Camera cam;
 
 	void Start () {
-        cam.pixelRect = new Rect(0, 0, 600f, 800f);
+        //cam.pixelRect = new Rect(0, 0, 600f, 800f);
 	}
 	
 	// Update is called once per frame

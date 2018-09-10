@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     public bool facingRight = true;
     private Vector3 Scalex;
 
+    private Vector2 PlayertoMouse;
+
     //Component
     private Rigidbody2D rb2d;
 
@@ -81,10 +83,10 @@ public class PlayerController : MonoBehaviour {
         if (isGodmod) {
             if (Input.GetMouseButtonDown(0)&&!isGrabing)
             {
+
                 mousepos = Input.mousePosition;
                 mousepos.z = 10f;
                 screenpos = mycam.ScreenToWorldPoint(mousepos);
-
                 RaycastHit2D myhit = Physics2D.Raycast(screenpos, Vector2.zero, Mathf.Infinity, lMask);
                 if (myhit)
                 {
@@ -125,7 +127,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FlipFunction() {
-        if ((hAxes < 0 && facingRight) || (hAxes > 0 && !facingRight))
+        /*if ((hAxes < 0 && facingRight) || (hAxes > 0 && !facingRight))
         {
             facingRight = !facingRight;
 
@@ -134,6 +136,18 @@ public class PlayerController : MonoBehaviour {
 
             transform.localScale = Scalex;
 
+        }*/
+        mousepos = Input.mousePosition;
+        mousepos.z = 10f;
+        screenpos = mycam.ScreenToWorldPoint(mousepos);
+
+        PlayertoMouse = (Vector2)(screenpos - transform.position);
+        if (PlayertoMouse.x <= 1)
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
+        else {
+            transform.localScale = Vector3.one;
         }
 
     }
