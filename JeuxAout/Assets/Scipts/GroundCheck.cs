@@ -23,7 +23,6 @@ public class GroundCheck : MonoBehaviour {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Sol") || collision.gameObject.layer == LayerMask.NameToLayer("Cube"))
         {
             pController.grounded = true;
-            Debug.Log("caca");
             anim.SetBool("Grounded", true);
         }
     }

@@ -15,9 +15,29 @@ public class SceneManagerScript : MonoBehaviour {
     public Slider But;
     public int butCount;
 
+    public GameObject[] Debris;
+    public GameObject Boite;
+
 
 	void Start () {
-		
+        int count = 0;
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag("SpawnerDebris");
+        foreach (GameObject spa in spawners) {
+            //int rand1 = Random.Range(0, spawners.
+            //int rand2 = Random.Range()
+        }
+        foreach (GameObject spawner in spawners) {
+            if (count / 5 == 1)
+            {
+                Instantiate(Boite, spawner.transform.position, Quaternion.identity);
+                count = 0;
+            }
+            else
+            {
+                Instantiate(Debris[Random.Range(0, 6)], spawner.transform.position, Quaternion.identity);
+                count++;
+            }
+        }
 	}
 	
 	void Update () {
@@ -36,5 +56,11 @@ public class SceneManagerScript : MonoBehaviour {
 
     public void PlayerKilled() {
         GameOver.gameObject.SetActive(true);
+    }
+
+    void Shuffle(GameObject[] spawners) {
+        for (int i = 0; i < spawners.Length; i++) {
+
+        }
     }
 }

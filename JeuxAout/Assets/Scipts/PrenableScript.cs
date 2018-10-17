@@ -46,7 +46,7 @@ public class PrenableScript : MonoBehaviour {
                 if (/*Input.GetKeyDown(KeyCode.E)*/Input.GetMouseButtonDown(0))
                 {
                     orb2d.gravityScale = 1f;
-                    objetPris.GetComponent<BoxCollider2D>().isTrigger = false;
+                    objetPris.GetComponent<PolygonCollider2D>().isTrigger = false;
                     orb2d.velocity =pguide.dir * pushSpeed;
                     Debug.Log(pguide.dir * pushSpeed);
                     isHolding = false;
@@ -87,7 +87,7 @@ public class PrenableScript : MonoBehaviour {
                 isHolding = true;
                 if (objetPris != null)
                 {
-                    objetPris.GetComponent<BoxCollider2D>().isTrigger = true;
+                    objetPris.GetComponent<PolygonCollider2D>().isTrigger = true;
                     orb2d = objetPris.GetComponent<Rigidbody2D>();
                     orb2d.gravityScale = 0f;
                     orb2d.angularVelocity = 0f;

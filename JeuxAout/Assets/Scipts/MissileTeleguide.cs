@@ -35,9 +35,9 @@ public class MissileTeleguide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb2d.velocity = transform.right * speed;
+        rb2d.velocity = -transform.up * speed;
         direction = (player.transform.position - transform.position).normalized;
-        rotateAmount = Vector3.Cross(direction, transform.right).z;
+        rotateAmount = Vector3.Cross(direction, -transform.up).z;
         rb2d.angularVelocity = -rotateAmount * rotateSpeed;
 
         if (isSlow)
