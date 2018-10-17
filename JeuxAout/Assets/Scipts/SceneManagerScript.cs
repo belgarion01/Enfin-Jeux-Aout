@@ -20,24 +20,7 @@ public class SceneManagerScript : MonoBehaviour {
 
 
 	void Start () {
-        int count = 0;
-        GameObject[] spawners = GameObject.FindGameObjectsWithTag("SpawnerDebris");
-        foreach (GameObject spa in spawners) {
-            //int rand1 = Random.Range(0, spawners.
-            //int rand2 = Random.Range()
-        }
-        foreach (GameObject spawner in spawners) {
-            if (count / 5 == 1)
-            {
-                Instantiate(Boite, spawner.transform.position, Quaternion.identity);
-                count = 0;
-            }
-            else
-            {
-                Instantiate(Debris[Random.Range(0, 6)], spawner.transform.position, Quaternion.identity);
-                count++;
-            }
-        }
+        SpawnDebris();
 	}
 	
 	void Update () {
@@ -54,13 +37,38 @@ public class SceneManagerScript : MonoBehaviour {
 
 	}
 
+    void  SpawnDebris() {
+        int count = 0;
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag("SpawnerDebris");
+        foreach (GameObject spa in spawners)
+        {
+            int rand1 = Random.Range(0, spawners.Length);
+            int rand2 = Random.Range(0, spawners.Length);
+
+            Swap(spawners, rand1, rand2);
+        }
+        foreach (GameObject spawner in spawners)
+        {
+            if (count / 5 == 1)
+            {
+                Instantiate(Boite, spawner.transform.position, Quaternion.identity);
+                count = 0;
+            }
+            else
+            {
+                Instantiate(Debris[Random.Range(0, 6)], spawner.transform.position, Quaternion.identity);
+                count++;
+            }
+        }
+    }
+
     public void PlayerKilled() {
         GameOver.gameObject.SetActive(true);
     }
 
-    void Shuffle(GameObject[] spawners) {
-        for (int i = 0; i < spawners.Length; i++) {
-
-        }
+    void Swap(GameObject[]array, int first, int second) {
+        GameObject temp = array[first];
+        array[first] = array[second];
+        array[second] = temp;
     }
 }

@@ -48,7 +48,6 @@ public class PrenableScript : MonoBehaviour {
                     orb2d.gravityScale = 1f;
                     objetPris.GetComponent<PolygonCollider2D>().isTrigger = false;
                     orb2d.velocity =pguide.dir * pushSpeed;
-                    Debug.Log(pguide.dir * pushSpeed);
                     isHolding = false;
                     //Reset aussi ce qui permet de déterminer quel objet prendre
                     objetPris = null;
@@ -99,7 +98,16 @@ public class PrenableScript : MonoBehaviour {
     //Met dans une liste les objets à porter
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("Prenable")|| collision.gameObject.CompareTag("PrenableOr")|| collision.gameObject.CompareTag("PrenablePower")) && !isHolding&& !ListePrenables.Contains(collision.gameObject))
+        /*if ((collision.gameObject.CompareTag("Prenable")|| collision.gameObject.CompareTag("PrenableOr")|| collision.gameObject.CompareTag("PrenablePower")) && !isHolding&& !ListePrenables.Contains(collision.gameObject))
+        {
+            ListePrenables.Add(collision.gameObject);
+        }
+        */
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((collision.gameObject.CompareTag("Prenable") || collision.gameObject.CompareTag("PrenableOr") || collision.gameObject.CompareTag("PrenablePower")) && !isHolding && !ListePrenables.Contains(collision.gameObject))
         {
             ListePrenables.Add(collision.gameObject);
         }

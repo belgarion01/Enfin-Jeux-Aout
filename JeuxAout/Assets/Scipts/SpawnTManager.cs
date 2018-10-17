@@ -8,6 +8,8 @@ public class SpawnTManager : MonoBehaviour {
     public float spawnRate = 5f;
     public float beginTime = 2f;
 
+    public float rangeSpawn = 5f;
+
 	void Start () {
         InvokeRepeating("SpawnMissile", beginTime, spawnRate);
     }
@@ -20,7 +22,13 @@ public class SpawnTManager : MonoBehaviour {
     void SpawnMissile()
     {
 
-        Instantiate(Missiles, new Vector2(Random.Range(transform.position.x-11f, transform.position.x+ 11f), transform.position.y), Quaternion.identity);
+        Instantiate(Missiles, new Vector2(Random.Range(transform.position.x- rangeSpawn, transform.position.x+ rangeSpawn), transform.position.y), Quaternion.identity);
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere((Vector3)new Vector2(transform.position.x - rangeSpawn, transform.position.y), 0.5f);
+        Gizmos.DrawSphere((Vector3)new Vector2(transform.position.x + rangeSpawn, transform.position.y), 0.5f);
     }
 }

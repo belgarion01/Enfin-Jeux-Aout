@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject explosionRadius;
 
     //God Mod
-    public bool isGodmod = true;
+    public bool isGodmod = false;
     public Camera mycam;
     private Vector3 mousepos;
     private Vector3 screenpos;
@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour {
                 grabed.transform.position = pos;
                 if (Input.GetMouseButtonUp(0)) {
                     isGrabing = false;
+                    grabed.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 }
             }
         }
@@ -152,10 +153,12 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    public void PowerUp() {
-
-        Debug.Log("Bouya");
+    public IEnumerator PowerUp() {
+        isGodmod = true;
+        yield return new WaitForSeconds(5f);
+        isGodmod = false;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(GroundCheck.position, groundCheckRadius);
@@ -170,4 +173,9 @@ public class PlayerController : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
+
+    /*IEnumerator CalculateDirection() {
+        Vector3 lastPosition = transform.position;
+        yield return Vector3.zero;
+    }*/
 }

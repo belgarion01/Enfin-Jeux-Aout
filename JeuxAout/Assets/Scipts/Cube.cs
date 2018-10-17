@@ -11,6 +11,8 @@ public class Cube : MonoBehaviour {
 
     private PlayerController pController;
 
+    public bool isGodGrabbed = false;
+
     void Start () {
         prenableScript = GameObject.FindGameObjectWithTag("PrenableScript").GetComponent<PrenableScript>();
         pController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -51,7 +53,7 @@ public class Cube : MonoBehaviour {
             Instantiate(SpawnerLoot, transform.position, Quaternion.identity);
         }
         if (this.gameObject.CompareTag("PrenablePower")) {
-            pController.PowerUp();
+            StartCoroutine(pController.PowerUp());
         }
         Destroy(this.gameObject);
     }
