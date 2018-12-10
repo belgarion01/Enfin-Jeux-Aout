@@ -19,6 +19,7 @@ public class PrenableScript : MonoBehaviour {
     public float pushSpeed;
     //Player
     private PlayerController pController;
+    public Animator anim;
 
     void Start () {
         pguide = prenableGuide.GetComponent<PGuide>();
@@ -26,7 +27,9 @@ public class PrenableScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        
+        if (!pController.isGodmod) {
+            anim.SetBool("withoutHand", isHolding);
+        }
         //(Attention c'est la 2ème partie du code)
         //Si le joueur porte qqchose
         if (isHolding&&!pController.isGodmod)

@@ -55,6 +55,14 @@ public class Cube : MonoBehaviour {
         if (this.gameObject.CompareTag("PrenablePower")) {
             StartCoroutine(pController.PowerUp());
         }
-        Destroy(this.gameObject);
+        if (!this.gameObject.CompareTag("PrenablePower"))
+        {
+            Destroy(this.gameObject);
+        }
+        else {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
+            
+        }
     }
 }

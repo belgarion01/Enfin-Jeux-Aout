@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour {
     //Explosion
     public GameObject explosionRadius;
 
+    public GameObject Curseur;
+    public Vector2 curseurOffset;
+
     //God Mod
     public bool isGodmod = false;
     public Camera mycam;
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
         anim = GetComponent<Animator>();
-        
+        Curseur.SetActive(false);
     }
 	
 	void Update () {
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour {
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("VelocityY", rb2d.velocity.y);
         anim.SetInteger("JumpCounter", jumpCounter);
+        //anim.SetBool("isGodMod", isGodmod);
 
 
         if (Input.GetKeyDown(KeyCode.A)) {
@@ -80,8 +84,13 @@ public class PlayerController : MonoBehaviour {
             Move();
             JumpFunction();
         }
-        if (isGodmod) {
-            if (Input.GetMouseButtonDown(0)&&!isGrabing)
+        if (isGodmod)
+        {
+            anim.SetBool("withoutHand", true);
+            Curseur.SetActive(true);
+            Vector2 tempMousePos = mycam.ScreenToWorldPoint(Input.mousePosition);
+            Curseur.transform.position = tempMousePos;
+            if (Input.GetMouseButtonDown(0) && !isGrabing)
             {
 
                 mousepos = Input.mousePosition;
@@ -94,15 +103,20 @@ public class PlayerController : MonoBehaviour {
                     grabed = myhit.transform.gameObject;
                 }
             }
-            if (isGrabing) {
+            if (isGrabing)
+            {
                 Vector3 pos = mycam.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 0;
                 grabed.transform.position = pos;
-                if (Input.GetMouseButtonUp(0)) {
+                if (Input.GetMouseButtonUp(0))
+                {
                     isGrabing = false;
                     grabed.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 }
             }
+        }
+        else {
+            Curseur.SetActive(false);
         }
     }
 
