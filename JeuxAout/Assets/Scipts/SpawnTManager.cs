@@ -11,6 +11,10 @@ public class SpawnTManager : MonoBehaviour {
     public float rangeSpawn = 5f;
 
 	void Start () {
+        if (Difficulty.hardMode)
+        {
+            spawnRate = 3f;
+        }
         InvokeRepeating("SpawnMissile", beginTime, spawnRate);
     }
 	
