@@ -49,10 +49,17 @@ public class PlayerController : MonoBehaviour {
     //Animation
     private Animator anim;
 
+    public bool canRepair = false;
+
+    private PrenableScript pScript;
+
+    public float repairSpeed;
+
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
         anim = GetComponent<Animator>();
+        pScript = FindObjectOfType<PrenableScript>();
         Curseur.SetActive(false);
     }
 	
@@ -63,12 +70,29 @@ public class PlayerController : MonoBehaviour {
         anim.SetInteger("JumpCounter", jumpCounter);
         //anim.SetBool("isGodMod", isGodmod);
 
+        if (Input.GetKey(KeyCode.E) && !pScript.isHolding)
+        {
+            Debug.Log("isrepairing");
+            anim.SetBool("isRepairing", true);
+            canMove = false;
+            isGodmod = false;
+            if (scManager.fuelCount < 5)
+            {
+                scManager.fuelCount += repairSpeed;
+            }
+        }
+        else {
+            anim.SetBool("isRepairing", false);
+        }
+        if (Input.GetKeyUp(KeyCode.E)) {
+            canMove = true;
+        }
 
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding) {
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
         }
-        if (Input.GetKeyUp(KeyCode.A)){
+        if (Input.GetKeyUp(KeyCode.A)&&!pScript.isHolding){
             canMove = true;
         }
 

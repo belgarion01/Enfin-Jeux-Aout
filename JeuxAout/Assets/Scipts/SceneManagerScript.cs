@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour {
 
     public Text GameOver;
-    public Text Victoire;
+    //public Text Victoire;
 
     public Slider Fueler;
-    public int fuelCount = 0;
+    public float fuelCount = 0;
 
     public Slider But;
     public int butCount;
@@ -29,11 +29,6 @@ public class SceneManagerScript : MonoBehaviour {
         }
 
         Fueler.value = fuelCount;
-        But.value = butCount;
-
-        if (butCount >= 5) {
-            Victoire.gameObject.SetActive(true);
-        }
 
 	}
 
