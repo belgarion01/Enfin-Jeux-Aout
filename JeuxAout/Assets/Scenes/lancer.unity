@@ -2135,7 +2135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1243361937
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2926,6 +2926,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1712243413903628, guid: b0052475007d60848818f123a1ed8bbe,
         type: 2}
+    - target: {fileID: 114062817995542664, guid: 00f22ccaade849f43a0e2d9817a02b04,
+        type: 2}
+      propertyPath: fuelCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f22ccaade849f43a0e2d9817a02b04, type: 2}
   m_IsPrefabAsset: 0

@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding) {
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
+            rb2d.velocity = Vector3.zero;
         }
         if (Input.GetKeyUp(KeyCode.A)&&!pScript.isHolding){
             canMove = true;

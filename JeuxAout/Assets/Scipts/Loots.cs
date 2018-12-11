@@ -27,7 +27,7 @@ public class Loots : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //scManager.fuelCount++;
+            scManager.fuelCount += 0.625f;
             Destroy(this.gameObject);
         }
     }

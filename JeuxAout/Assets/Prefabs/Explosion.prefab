@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133a9e788296d449929092d63e72248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadiusSpeed: 3
-  countdown: 1
+  explosionRadiusSpeed: 1.5
+  countdown: 3
   stade: 2
+  consummingSpeed: 1
+  ListExplosion: []
