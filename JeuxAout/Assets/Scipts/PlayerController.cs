@@ -88,13 +88,15 @@ public class PlayerController : MonoBehaviour {
             canMove = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding) {
+        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod) {
+            anim.SetBool("isExploding", true);
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
             rb2d.velocity = Vector3.zero;
         }
         if (Input.GetKeyUp(KeyCode.A)&&!pScript.isHolding){
             canMove = true;
+            anim.SetBool("isExploding", false);
         }
 
         hAxes = Input.GetAxis("Horizontal");
