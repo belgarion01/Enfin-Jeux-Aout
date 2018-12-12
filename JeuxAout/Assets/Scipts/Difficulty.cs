@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Difficulty : MonoBehaviour {
 
 	public static bool hardMode;
+    public Animator difficultyAnim;
 
     private void Start()
     {
@@ -22,5 +23,6 @@ public class Difficulty : MonoBehaviour {
 
     public void ChangeDifficulty() {
         hardMode = !hardMode;
+        difficultyAnim.SetBool("Difficulty", hardMode);
     }
 }
