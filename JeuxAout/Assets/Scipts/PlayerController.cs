@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour {
 
     public float repairSpeed;
 
+    private bool lookingRight = true;
+
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
@@ -184,12 +186,21 @@ public class PlayerController : MonoBehaviour {
         screenpos = mycam.ScreenToWorldPoint(mousepos);
 
         PlayertoMouse = (Vector2)(screenpos - transform.position);
-        if (PlayertoMouse.x <= 1)
+        if (PlayertoMouse.x <= 0&&lookingRight)
         {
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            foreach (Transform child in transform) {
+                child.transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            }
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else {
-            transform.localScale = Vector3.one;
+            //transform.localScale = Vector3.one;
+            GetComponent<SpriteRenderer>().flipX = false;
+            foreach (Transform child in transform)
+            {
+                child.transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            }
         }
 
     }
