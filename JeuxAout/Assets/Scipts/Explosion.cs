@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour {
     public List<GameObject> ListExplosion;
     private Cube cubeScript;
 
-
+    private bool noMoreFuel = false;
 
     void Start () {
         scManager = FindObjectOfType<SceneManagerScript>();
@@ -23,13 +23,16 @@ public class Explosion : MonoBehaviour {
 	void Update () {
         countdown -= Time.deltaTime;
         scManager.fuelCount -= consummingSpeed * Time.deltaTime;
+        if (scManager.fuelCount <= 0) {
+            noMoreFuel = true;
+        }
         /*if (countdown <= 0 && stade > 0)
         {
             transform.localScale += explosionRadiusSpeed * Vector3.one;
             countdown = 1f;
             stade--;
         }*/
-        if (Input.GetKeyUp(KeyCode.A)){
+        if (Input.GetKeyUp(KeyCode.A)||noMoreFuel){
             foreach (GameObject victime in ListExplosion) {
                 cubeScript = victime.GetComponent<Cube>();
                 cubeScript.Death();

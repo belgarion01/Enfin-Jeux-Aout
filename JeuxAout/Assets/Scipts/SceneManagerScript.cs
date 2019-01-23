@@ -9,7 +9,7 @@ public class SceneManagerScript : MonoBehaviour {
     public Text GameOver;
     //public Text Victoire;
 
-    public Slider Fueler;
+    public Image Fueler;
     public float fuelCount = 0;
 
     public Slider But;
@@ -27,8 +27,8 @@ public class SceneManagerScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
-        Fueler.value = fuelCount;
+        fuelCount = Mathf.Clamp(fuelCount, 0f, 1f);
+        Fueler.fillAmount = fuelCount;
 
 	}
 

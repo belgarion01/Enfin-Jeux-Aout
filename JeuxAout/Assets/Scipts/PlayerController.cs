@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour {
             canMove = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod) {
+        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod&&scManager.fuelCount>0) {
             anim.SetBool("isExploding", true);
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void JumpFunction() {
-        if (Input.GetKeyDown(KeyCode.Space) && (grounded || jumpCounter > 0))
+        if (Input.GetKeyDown(KeyCode.Z) && (grounded || jumpCounter > 0))
         {
             if (jumpCounter == 2)
             {
