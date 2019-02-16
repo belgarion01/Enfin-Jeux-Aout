@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
  
@@ -68,7 +69,9 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void Update () {
-
+        if (repairLevel >= 4f) {
+            SceneManager.LoadScene("Fini");
+        }
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("VelocityY", rb2d.velocity.y);
         anim.SetInteger("JumpCounter", jumpCounter);
@@ -81,7 +84,7 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("isRepairing", true);
             canMove = false;
             isGodmod = false;
-            repairLevel += repairSpeed;
+            repairLevel += Time.deltaTime;
 
             if (scManager.fuelCount < 5)
             {

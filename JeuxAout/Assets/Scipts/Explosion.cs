@@ -14,25 +14,35 @@ public class Explosion : MonoBehaviour {
     private Cube cubeScript;
 
     private bool noMoreFuel = false;
+    private Transform player;
 
     void Start () {
         scManager = FindObjectOfType<SceneManagerScript>();
+        if (scManager.fuelCount <= 0) {
+            Destroy(gameObject);
+        }
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         countdown -= Time.deltaTime;
-        /*scManager.fuelCount -= consummingSpeed * Time.deltaTime;
-        if (scManager.fuelCount <= 0) {
+        transform.position = player.position;
+        if (scManager.fuelCount <= 0)
+        {
             noMoreFuel = true;
-        }*/
+        }
+        else {
+            scManager.fuelCount -= consummingSpeed * Time.deltaTime;
+
+        }
         /*if (countdown <= 0 && stade > 0)
         {
             transform.localScale += explosionRadiusSpeed * Vector3.one;
             countdown = 1f;
             stade--;
         }*/
-        if (Input.GetKeyUp(KeyCode.A)/*||noMoreFuel*/){
+        if (Input.GetKeyUp(KeyCode.A)||noMoreFuel){
             foreach (GameObject victime in ListExplosion) {
                 cubeScript = victime.GetComponent<Cube>();
                 cubeScript.Death();
@@ -40,7 +50,7 @@ public class Explosion : MonoBehaviour {
             }
             Destroy(this.gameObject);
         }
-        if (/*scManager.fuelCount > 0 &&*/ countdown > 0)
+        if (scManager.fuelCount > 0 && countdown > 0)
         {
             transform.localScale += Vector3.one * explosionRadiusSpeed * Time.deltaTime;
         }

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4503783759326522}
   - component: {fileID: 50972584089591734}
   - component: {fileID: 114583336070456106}
-  - component: {fileID: 61511624674614986}
   - component: {fileID: 212685960324605016}
   - component: {fileID: 95189932080941156}
+  - component: {fileID: 58199969079386452}
   m_Layer: 0
   m_Name: LootOr
   m_TagString: Loot
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468247781813326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.567005, y: -0.11746633, z: 1.1703125}
+  m_LocalPosition: {x: -1.8293629, y: 3.3818388, z: 1.1703125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61511624674614986
-BoxCollider2D:
+--- !u!58 &58199969079386452
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,19 +76,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.018161774}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.46875, y: 0.75}
-    newSize: {x: 0.46875, y: 0.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.02, y: 0.04}
   serializedVersion: 2
-  m_Size: {x: 0.46875, y: 0.71367645}
-  m_EdgeRadius: 0
+  m_Radius: 0.27
 --- !u!95 &95189932080941156
 Animator:
   serializedVersion: 3
@@ -98,7 +88,7 @@ Animator:
   m_GameObject: {fileID: 1468247781813326}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8a50f2849cba7574fa756135aca61f59, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2ffe41ec75008f4990beffef46f17fa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -153,7 +143,7 @@ SpriteRenderer:
   m_SortingLayerID: 1267207177
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22ad280f9fc55774793ed96f0c8a4ca4, type: 3}
+  m_Sprite: {fileID: 21300016, guid: 57302ef2c0f4a7c4f9995407dfe5d14d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

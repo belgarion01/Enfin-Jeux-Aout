@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lancer.unity
     guid: 6927851c9566c6147b2978477e94b2c1
+  - enabled: 1
+    path: Assets/Scenes/Fini.unity
+    guid: 25801fa519b7f094daa5dd80678360b9
   m_configObjects: {}
