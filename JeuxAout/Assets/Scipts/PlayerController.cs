@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void JumpFunction() {
-        if (Input.GetKeyDown(KeyCode.Z) && (grounded || jumpCounter > 0))
+        if (Input.GetKeyDown(KeyCode.Space) && (grounded || jumpCounter > 0))
         {
             if (jumpCounter == 2)
             {
