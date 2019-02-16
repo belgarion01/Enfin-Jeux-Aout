@@ -69,8 +69,8 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void Update () {
-        if (repairLevel >= 4f) {
-            SceneManager.LoadScene("Fini");
+        if (repairLevel >= 5f) {
+            StartCoroutine(Finish());
         }
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("VelocityY", rb2d.velocity.y);
@@ -239,4 +239,9 @@ public class PlayerController : MonoBehaviour {
         Vector3 lastPosition = transform.position;
         yield return Vector3.zero;
     }*/
+
+    IEnumerator Finish() {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Fini");
+    }
 }

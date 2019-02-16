@@ -29,7 +29,7 @@ public class MissileTeleguide : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
         player = GameObject.FindGameObjectWithTag("Player");
-        prenableScript = GameObject.FindGameObjectWithTag("PrenableScript").GetComponent<PrenableScript>();
+        prenableScript = FindObjectOfType<PrenableScript>();
     }
 
     // Update is called once per frame

@@ -22,6 +22,7 @@ public class Explosion : MonoBehaviour {
             Destroy(gameObject);
         }
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        scManager.fuelCount -= 0.2f;
 	}
 	
 	// Update is called once per frame

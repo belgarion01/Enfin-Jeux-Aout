@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour {
 
-    public Text GameOver;
+    public GameObject GameOver;
     //public Text Victoire;
 
     public Image Fueler;
@@ -58,7 +58,13 @@ public class SceneManagerScript : MonoBehaviour {
     }
 
     public void PlayerKilled() {
-        GameOver.gameObject.SetActive(true);
+        GameOver.SetActive(true);
+    }
+
+    IEnumerator GameOverIE() {
+        GameOver.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(0);
     }
 
     void Swap(GameObject[]array, int first, int second) {
