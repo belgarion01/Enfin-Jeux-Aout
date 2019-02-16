@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour {
     public float repairSpeed;
 
     private bool lookingRight = true;
+    public float repairLevel;
+
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -72,15 +74,18 @@ public class PlayerController : MonoBehaviour {
         anim.SetInteger("JumpCounter", jumpCounter);
         //anim.SetBool("isGodMod", isGodmod);
 
-        if (Input.GetKey(KeyCode.E) && !pScript.isHolding)
+        if (Input.GetKey(KeyCode.E) && !pScript.isHolding&&canRepair)
         {
+            rb2d.velocity = Vector3.zero;   
             Debug.Log("isrepairing");
             anim.SetBool("isRepairing", true);
             canMove = false;
             isGodmod = false;
+            repairLevel += repairSpeed;
+
             if (scManager.fuelCount < 5)
             {
-                scManager.fuelCount += repairSpeed;
+                //scManager.fuelCount += repairSpeed;
             }
         }
         else {
@@ -90,8 +95,9 @@ public class PlayerController : MonoBehaviour {
             canMove = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod&&scManager.fuelCount>0) {
+        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod/*&&scManager.fuelCount>0*/) {
             anim.SetBool("isExploding", true);
+            Debug.Log("Halo");
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
             rb2d.velocity = Vector3.zero;

@@ -28,7 +28,7 @@ public class Ship : MonoBehaviour {
         else {
             pController.canRepair = false;
         }
-        anim.SetFloat("Fuel", scManager.fuelCount);
+        anim.SetFloat("Fuel", pController.repairLevel);
 	}
 
     private void OnDrawGizmos()
