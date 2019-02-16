@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
  
@@ -59,6 +60,12 @@ public class PlayerController : MonoBehaviour {
     private bool lookingRight = true;
     public float repairLevel;
 
+    public Animator shipAnim;
+
+    private int life = 2;
+    public Animator vie1;
+    public Animator vie2;
+
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -70,7 +77,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
         if (repairLevel >= 5f) {
-            StartCoroutine(Finish());
+            Finish();
         }
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("VelocityY", rb2d.velocity.y);
@@ -227,11 +234,22 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Missile")){
-            Debug.Log(collision.gameObject);
-            Destroy(collision.gameObject);
-            scManager.PlayerKilled();
-            Destroy(this.gameObject);
+            if (life == 2)
+            {
+                vie2.SetTrigger("Die");
+                Destroy(collision.gameObject);
+                life--;
+            }
+            else if (life == 1)
+            {
+                vie1.SetTrigger("Die");
+                Destroy(collision.gameObject);
+                scManager.PlayerKilled();
+                Destroy(this.gameObject);
+
+            }
         }
     }
 
@@ -240,8 +258,8 @@ public class PlayerController : MonoBehaviour {
         yield return Vector3.zero;
     }*/
 
-    IEnumerator Finish() {
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Fini");
+    void Finish() {
+        scManager.FFinish();
+        Destroy(gameObject);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Ship : MonoBehaviour {
 
     public Vector3 boxDimension;
@@ -37,5 +37,10 @@ public class Ship : MonoBehaviour {
         {
             Gizmos.DrawCube(transform.position + offset, boxDimension);
         }
+    }
+
+    public void VictoryScreen()
+    {
+        SceneManager.LoadScene(2);
     }
 }

@@ -18,6 +18,7 @@ public class SceneManagerScript : MonoBehaviour {
     public GameObject[] Debris;
     public GameObject Boite;
 
+    public Animator shipAnim;
 
 	void Start () {
         SpawnDebris();
@@ -58,12 +59,12 @@ public class SceneManagerScript : MonoBehaviour {
     }
 
     public void PlayerKilled() {
-        GameOver.SetActive(true);
+        StartCoroutine(GameOverIE());
     }
 
     IEnumerator GameOverIE() {
         GameOver.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(0);
     }
 
@@ -72,4 +73,15 @@ public class SceneManagerScript : MonoBehaviour {
         array[first] = array[second];
         array[second] = temp;
     }
+
+    IEnumerator Decollage() {
+        yield return new WaitForSeconds(1f);
+        shipAnim.SetTrigger("Decollage");
+    }
+
+    public void FFinish() {
+        StartCoroutine(Decollage());
+    }
+
+
 }
