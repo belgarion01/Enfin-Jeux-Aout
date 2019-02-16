@@ -7,6 +7,12 @@ public class MenuM : MonoBehaviour {
 
     public Transform cam;
 
+    private void Awake()
+    {
+        
+        Screen.SetResolution(600, 800, false, 60);
+    }
+
     public void PlayGame() {
         SceneManager.LoadScene("lancer");
     }
