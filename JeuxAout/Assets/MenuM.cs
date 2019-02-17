@@ -17,6 +17,14 @@ public class MenuM : MonoBehaviour {
         FindObjectOfType<AudioManager>().Play("MainMenu");
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
     public void PlayGame() {
         SceneManager.LoadScene("lancer");
     }
