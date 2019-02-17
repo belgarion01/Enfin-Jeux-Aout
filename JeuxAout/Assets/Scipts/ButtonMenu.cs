@@ -19,6 +19,7 @@ public class ButtonMenu : MonoBehaviour {
     private void OnMouseEnter()
     {
         hover = true;
+        FindObjectOfType<AudioManager>().Play("OnHover");
     }
 
     private void OnMouseExit()

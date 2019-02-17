@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour {
     public Animator vie1;
     public Animator vie2;
 
+    private bool flag = false;
+    private bool canExplode = true;
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -79,11 +81,11 @@ public class PlayerController : MonoBehaviour {
         if (repairLevel >= 5f) {
             Finish();
         }
+        canExplode = scManager.fuelCount > 0.05f ? true : false;
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         anim.SetFloat("VelocityY", rb2d.velocity.y);
         anim.SetInteger("JumpCounter", jumpCounter);
         //anim.SetBool("isGodMod", isGodmod);
-
         if (Input.GetKey(KeyCode.E) && !pScript.isHolding&&canRepair)
         {
             rb2d.velocity = Vector3.zero;   
@@ -105,16 +107,22 @@ public class PlayerController : MonoBehaviour {
             canMove = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod/*&&scManager.fuelCount>0*/) {
+        if (Input.GetKeyDown(KeyCode.A)&&!pScript.isHolding&&!isGodmod&&canExplode/*&&scManager.fuelCount>0*/) {
+            if (!flag) {
+                FindObjectOfType<AudioManager>().Play("ChargingExplosion");
+                flag = true;
+            }
             anim.SetBool("isExploding", true);
             Debug.Log("Halo");
             Instantiate(explosionRadius, transform.position, Quaternion.identity);
             canMove = false;
             rb2d.velocity = Vector3.zero;
         }
-        if (Input.GetKeyUp(KeyCode.A)&&!pScript.isHolding){
+        if (Input.GetKeyUp(KeyCode.A)&&!pScript.isHolding&&flag){
             canMove = true;
+            FindObjectOfType<AudioManager>().Stop("ChargingExplosion");
             anim.SetBool("isExploding", false);
+            flag = false;
         }
 
         hAxes = Input.GetAxis("Horizontal");
@@ -224,6 +232,7 @@ public class PlayerController : MonoBehaviour {
     public IEnumerator PowerUp() {
         isGodmod = true;
         yield return new WaitForSeconds(5f);
+        FindObjectOfType<AudioManager>().Play("PlayerPowerDown");
         isGodmod = false;
     }
 
@@ -236,11 +245,15 @@ public class PlayerController : MonoBehaviour {
     {
         
         if (collision.gameObject.CompareTag("Missile")){
+            FindObjectOfType<AudioManager>().Play("PlayerHit");
             if (life == 2)
             {
+
                 vie2.SetTrigger("Die");
                 Destroy(collision.gameObject);
                 life--;
+                FindObjectOfType<AudioManager>().Play("MissileExplode");
+                FindObjectOfType<AudioManager>().Stop("MissilePcht");
             }
             else if (life == 1)
             {
@@ -261,5 +274,9 @@ public class PlayerController : MonoBehaviour {
     void Finish() {
         scManager.FFinish();
         Destroy(gameObject);
+    }
+
+    public void HammerSound() {
+        FindObjectOfType<AudioManager>().Play("Hammer");    
     }
 }

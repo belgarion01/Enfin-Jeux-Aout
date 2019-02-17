@@ -30,6 +30,7 @@ public class MissileTeleguide : MonoBehaviour
         scManager = GameObject.FindGameObjectWithTag("scManager").GetComponent<SceneManagerScript>();
         player = GameObject.FindGameObjectWithTag("Player");
         prenableScript = FindObjectOfType<PrenableScript>();
+        FindObjectOfType<AudioManager>().Play("MissilePcht");
     }
 
     // Update is called once per frame
@@ -54,6 +55,8 @@ public class MissileTeleguide : MonoBehaviour
     {
         if (collision.CompareTag("Sol"))
         {
+            FindObjectOfType<AudioManager>().Stop("MissilePcht");
+            FindObjectOfType<AudioManager>().Play("MissileExplode");
             Destroy(this.gameObject);
         }
     }

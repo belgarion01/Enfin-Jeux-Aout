@@ -40,6 +40,8 @@ public class Cube : MonoBehaviour {
         }
     }
     public void Death() {
+        FindObjectOfType<AudioManager>().Play("MissileExplode");
+        FindObjectOfType<AudioManager>().Stop("MissilePcht");
         if (this.gameObject == prenableScript.objetPris)
         {
             prenableScript.objetPris = null;
@@ -53,6 +55,7 @@ public class Cube : MonoBehaviour {
             Instantiate(SpawnerLoot, transform.position, Quaternion.identity);
         }
         if (this.gameObject.CompareTag("PrenablePower")) {
+            FindObjectOfType<AudioManager>().Play("PlayerPowerUp");
             StartCoroutine(pController.PowerUp());
         }
         if (!this.gameObject.CompareTag("PrenablePower"))

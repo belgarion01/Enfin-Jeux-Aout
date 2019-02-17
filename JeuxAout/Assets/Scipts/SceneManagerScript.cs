@@ -22,6 +22,7 @@ public class SceneManagerScript : MonoBehaviour {
 
 	void Start () {
         SpawnDebris();
+        FindObjectOfType<AudioManager>().Play("MainMusic");
 	}
 	
 	void Update () {
@@ -64,6 +65,8 @@ public class SceneManagerScript : MonoBehaviour {
 
     IEnumerator GameOverIE() {
         GameOver.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("GameOver");
+        FindObjectOfType<AudioManager>().Stop("MainMusic");
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(0);
     }
@@ -77,6 +80,7 @@ public class SceneManagerScript : MonoBehaviour {
     IEnumerator Decollage() {
         yield return new WaitForSeconds(1f);
         shipAnim.SetTrigger("Decollage");
+        FindObjectOfType<AudioManager>().Play("Decollage");
     }
 
     public void FFinish() {

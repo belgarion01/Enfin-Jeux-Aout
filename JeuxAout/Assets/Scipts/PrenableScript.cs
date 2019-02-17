@@ -48,6 +48,7 @@ public class PrenableScript : MonoBehaviour {
                 //Si il appuie sur E, il reset les propriétés physique de l'objet et se remet en mode "ne porte rien"
                 if (/*Input.GetKeyDown(KeyCode.E)*/Input.GetMouseButtonDown(0))
                 {
+                    FindObjectOfType<AudioManager>().Play("PlayerThrow");
                     orb2d.gravityScale = 1f;
                     objetPris.GetComponent<PolygonCollider2D>().isTrigger = false;
                     orb2d.velocity =pguide.dir * pushSpeed;
@@ -85,6 +86,7 @@ public class PrenableScript : MonoBehaviour {
                         objetPris = pren;
                     }
                 }
+                FindObjectOfType<AudioManager>().Play("PlayerGrab");
                 //De plus, on enlève les propriétés physiques de l'objets et on met le joueur en mode "porte qqchose"
                 isHolding = true;
                 if (objetPris != null)

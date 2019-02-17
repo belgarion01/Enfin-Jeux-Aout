@@ -8,9 +8,13 @@ public class MenuM : MonoBehaviour {
     public Transform cam;
 
     private void Awake()
-    {
-        
+    {       
         Screen.SetResolution(600, 800, false, 60);
+    }
+
+    private void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("MainMenu");
     }
 
     public void PlayGame() {
