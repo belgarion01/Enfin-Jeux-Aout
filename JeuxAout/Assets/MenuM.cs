@@ -9,7 +9,7 @@ public class MenuM : MonoBehaviour {
 
     private void Awake()
     {       
-        Screen.SetResolution(600, 800, false, 60);
+        Screen.SetResolution(600, 880, false, 60);
     }
 
     private void Start()
